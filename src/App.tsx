@@ -7,7 +7,8 @@ const StyledInput = styled.input`
   border-radius: 100px;
   height: 20px;
   padding: 7px 10px;
-  &:focus, &:active {
+  &:focus,
+  &:active {
     outline: none;
   }
   &:-internal-autofill-selected {
@@ -26,15 +27,15 @@ const StyledButton = styled.button`
   font-weight: bold;
   font-family: "Courier New", Courier, monospace;
   &:hover {
-    background-color: rgba(135, 0, 116, .9);
+    background-color: rgba(135, 0, 116, 0.9);
   }
   &:active {
     background-color: rgba(135, 0, 116, 1);
   }
-  box-shadow: 2px 3px 8px 1px rgba(105,105,105, 0.1),  0 1px 8px 1px rgba(0, 0, 0, .2);
-`
+  box-shadow: 2px 3px 8px 1px rgba(105, 105, 105, 0.1),
+    0 1px 8px 1px rgba(0, 0, 0, 0.2);
+`;
 // -------------
-
 
 function App() {
   const [textToPrint, setTextToPrint] = useState("");
@@ -55,21 +56,27 @@ function App() {
         lettersToPrint.push(letter);
         setLettersToPrint([...lettersToPrint]);
       }, i * 1000);
+
+      // When the last letter is printed, clear the lettersToPrint array.
+      setTimeout(() => {
+        if (i === textToPrintArr.length - 1) {
+          // Clear the input field.
+          setTextToPrint("");
+          setLettersToPrint([]);
+        }
+      }, (i + 1) * 1000);
     });
   };
 
-  // printText implemented using setInterval.
-
-  console.log("lettersToPrint outside of printText() ", lettersToPrint);
-
   return (
     <>
-      <label htmlFor="b6illboard-text">Billboard text: </label>
+      <label htmlFor="billboard-text">Billboard text: </label>
       <StyledInput
         onChange={(event) => saveInput(event)}
         type="text"
         id="billboard-text"
         name="billboard-text"
+        value={textToPrint}
       />
 
       <StyledButton onClick={() => printText()}>Print text</StyledButton>
