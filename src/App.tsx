@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 // ------- Some CSS styling using styled-components -------
+const ContentWrapper = styled.div`
+  padding: 20px 20px 20px 0;
+`;
+
 const StyledInput = styled.input`
   border: 2px solid rgba(135, 0, 116, 1);
   border-radius: 100px;
@@ -69,7 +73,7 @@ function App() {
   };
 
   return (
-    <>
+    <ContentWrapper>
       <label htmlFor="billboard-text">Billboard text: </label>
       <StyledInput
         onChange={(event) => saveInput(event)}
@@ -82,7 +86,7 @@ function App() {
       <StyledButton onClick={() => printText()}>Print text</StyledButton>
 
       <div id="billboard">{lettersToPrint}</div>
-    </>
+    </ContentWrapper>
   );
 }
 
