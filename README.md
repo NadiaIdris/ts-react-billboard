@@ -8,4 +8,4 @@
 - User will be able to enter a string in the input field and press Enter or click the button to print the string to the billboard.
 - User will be able to see the string printed on the billboard one letter a the time and then the billboard clears.
 
-![]()
+![](https://raw.githubusercontent.com/NadiaIdris/ts-react-billboard/main/src/images/ts-billboard.gif)
